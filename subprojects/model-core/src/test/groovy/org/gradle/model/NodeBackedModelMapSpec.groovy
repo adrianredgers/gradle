@@ -582,7 +582,7 @@ This element was created by testrule > create(item) and can be mutated as the fo
         realize()
 
         then:
-        InvalidModelRuleException e = thrown()
+        def e = thrown InvalidModelRuleException
         e.cause instanceof ModelRuleBindingException
         e.cause.message.startsWith("Model reference to element '${path.child('foo')}' with type java.lang.String is invalid due to incompatible types.")
     }
@@ -938,7 +938,7 @@ This element was created by testrule > create(item) and can be mutated as the fo
         registry.realize("values", ModelType.UNTYPED)
 
         then:
-        ModelRuleExecutionException e = thrown()
+        def e = thrown ModelRuleExecutionException
         e.cause.class == InvalidModelRuleDeclarationException
         e.cause.message.startsWith('''Type java.lang.Object is not a valid rule source:
 - Rule source classes must directly extend org.gradle.model.RuleSource''')
@@ -1057,7 +1057,7 @@ This element was created by testrule > create(item) and can be mutated as the fo
         registry.bindAllReferences()
 
         then:
-        UnboundModelRulesException e = thrown()
+        def e = thrown UnboundModelRulesException
         normaliseLineSeparators(e.message).contains("""
   testrule > named(missingElement, $ElementRules.name)
     subject:
@@ -1146,7 +1146,7 @@ This element was created by testrule > create(item) and can be mutated as the fo
         registry.bindAllReferences()
 
         then:
-        UnboundModelRulesException e = thrown()
+        def e = thrown UnboundModelRulesException
         e.rules.size() == 1
         e.rules.first().mutableInputs.first().path == "beans.sb1.foo"
     }

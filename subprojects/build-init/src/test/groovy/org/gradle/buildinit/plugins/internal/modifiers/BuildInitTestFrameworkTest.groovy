@@ -42,7 +42,7 @@ class BuildInitTestFrameworkTest extends Specification {
         BuildInitTestFramework.fromName("unknown")
 
         then:
-        GradleException e = thrown()
+        def e = thrown GradleException
         e.message == "The requested test framework 'unknown' is not supported."
     }
 

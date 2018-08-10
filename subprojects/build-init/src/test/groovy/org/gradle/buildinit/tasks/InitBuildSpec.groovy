@@ -96,7 +96,7 @@ class InitBuildSpec extends Specification {
         init.setupProjectLayout()
 
         then:
-        GradleException e = thrown()
+        def e = thrown GradleException
         e.message == "The requested test framework 'unknown' is not supported."
     }
 
@@ -110,7 +110,7 @@ class InitBuildSpec extends Specification {
         init.setupProjectLayout()
 
         then:
-        GradleException e = thrown()
+        def e = thrown GradleException
         e.message == "The requested test framework 'spock' is not supported in 'basic' setup type"
     }
 
@@ -125,7 +125,7 @@ class InitBuildSpec extends Specification {
         init.setupProjectLayout()
 
         then:
-        GradleException e = thrown()
+        def e = thrown GradleException
         e.message == "The requested DSL 'kotlin' is not supported in 'pom' setup type"
     }
 

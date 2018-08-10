@@ -41,7 +41,7 @@ class BuildInitBuildScriptDslTest extends Specification {
         BuildInitDsl.fromName("unknown")
 
         then:
-        GradleException e = thrown()
+        def e = thrown GradleException
         e.message == "The requested build script DSL 'unknown' is not supported."
     }
 

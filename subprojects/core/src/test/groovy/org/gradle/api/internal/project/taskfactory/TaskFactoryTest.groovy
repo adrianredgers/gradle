@@ -84,7 +84,7 @@ class TaskFactoryTest extends AbstractProjectBuilderSpec {
         taskFactory.create('task', NotATask)
 
         then:
-        InvalidUserDataException e = thrown()
+        def e = thrown InvalidUserDataException
         e.message == "Cannot create task of type 'NotATask' as it does not implement the Task interface."
     }
 
@@ -95,7 +95,7 @@ class TaskFactoryTest extends AbstractProjectBuilderSpec {
         taskFactory.create('task', TestDefaultTask)
 
         then:
-        TaskInstantiationException e = thrown()
+        def e = thrown TaskInstantiationException
         e.message == "Could not create task of type 'TestDefaultTask'."
         e.cause == failure
 

@@ -138,7 +138,7 @@ println 'hi'
         scriptCompilationHandler.compileToDir(scriptSource, classLoader, scriptCacheDir, metadataCacheDir, null, expectedScriptClass, verifier)
 
         then:
-        UnsupportedOperationException e = thrown()
+        def e = thrown UnsupportedOperationException
         e.message == "Script-display-name should not contain a package statement."
     }
 
@@ -246,7 +246,7 @@ println 'hi'
         scriptCompilationHandler.loadFromDir(scriptSource, sourceHashCode, classLoader, scriptCacheDir, metadataCacheDir, null, expectedScriptClass, classLoaderId).loadClass()
 
         then:
-        GradleException e = thrown()
+        def e = thrown GradleException
         e.message.contains("Could not load compiled classes for script-display-name from cache.")
         e.cause instanceof ClassCastException
     }
@@ -258,7 +258,7 @@ println 'hi'
         scriptCompilationHandler.compileToDir(source, classLoader, scriptCacheDir, metadataCacheDir, null, expectedScriptClass, verifier)
 
         then:
-        ScriptCompilationException e = thrown()
+        def e = thrown ScriptCompilationException
         e.lineNumber == 3
         e.cause.message.contains("script.gradle: 3: unexpected token: jsj")
 
@@ -405,7 +405,7 @@ println 'hi'
         scriptCompilationHandler.compileToDir(source, classLoader, scriptCacheDir, metadataCacheDir, null, expectedScriptClass, verifier)
 
         then:
-        ScriptCompilationException e = thrown()
+        def e = thrown ScriptCompilationException
         e.lineNumber == 1
         e.cause.message.contains("script.gradle: 1: unable to resolve class ${unknownClass}")
 
