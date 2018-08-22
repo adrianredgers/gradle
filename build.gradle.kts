@@ -47,6 +47,10 @@ buildTypes {
         tasks(
             "classes", "doc:checkstyleApi", "codeQuality",
             "docs:check", "distribution:checkBinaryCompatibility", "javadocAll")
+    }
+
+    create("compileAllBuild") {
+        tasks(":createBuildReceipt", "compileAll")
         projectProperties("ignoreIncomingBuildReceipt" to true)
     }
 
