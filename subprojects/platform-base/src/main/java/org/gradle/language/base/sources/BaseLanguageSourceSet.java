@@ -31,11 +31,20 @@ import org.gradle.platform.base.internal.ComponentSpecIdentifier;
  */
 @Incubating
 public class BaseLanguageSourceSet extends AbstractLanguageSourceSet {
-    // This is here as a convenience for subclasses to create additional SourceDirectorySets
+    /**
+     * This is here as a convenience for subclasses to create additional SourceDirectorySets
+     *
+     * @since 4.11
+     */
     protected final ObjectFactory objectFactory;
 
     private static final ThreadLocal<SourceSetInfo> NEXT_SOURCE_SET_INFO = new ThreadLocal<SourceSetInfo>();
 
+    /**
+     * Create a source set instance.
+     *
+     * @since 4.11
+     */
     public static <T extends LanguageSourceSet> T create(Class<? extends LanguageSourceSet> publicType, Class<T> implementationType, ComponentSpecIdentifier componentId, ObjectFactory objectFactory) {
         NEXT_SOURCE_SET_INFO.set(new SourceSetInfo(componentId, publicType, objectFactory));
         try {

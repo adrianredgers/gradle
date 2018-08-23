@@ -17,6 +17,7 @@ package org.gradle.api.internal.model;
 
 import org.gradle.api.Named;
 import org.gradle.api.file.SourceDirectorySet;
+import org.gradle.api.internal.provider.DefaultPropertyState;
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.api.provider.ListProperty;
 import org.gradle.api.provider.Property;
@@ -43,7 +44,7 @@ public class InstantiatorBackedObjectFactory implements ObjectFactory {
 
     @Override
     public <T> Property<T> property(Class<T> valueType) {
-        return broken();
+        return new DefaultPropertyState<T>(valueType);
     }
 
     @Override
